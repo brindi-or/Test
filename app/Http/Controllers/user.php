@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 
 class user extends Controller
 {
-    function loadView()
+    function getData(Request $req)
     {
-        return view("Users",['user'=>'']);
+        $req->validate([
+            'Username'=>'required | max :10',//permet de dire que le nom est necessaire pour se conecter 
+            'Userpassword'=>'required | min:5' 
+        ]);
+        return $req->input();
     }
 }

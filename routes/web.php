@@ -14,20 +14,22 @@ use App\Http\Controllers\user;
 |
 */
 
-Route::get('/', function () {
+Route::post('/', function () {
     return view('welcome');
     
 });
+//Route::get("path",'controller file');
 /*Route::get("/about",function(){
     return view('about');
 });
 route::view("about",'about');
 route::view("contact",'contact');
-//Route::get("path",'controller file');
+
 Route::get("user",'User@index');
-//Route::view("Users",'Users');
 Route::get("/Users/{name}",function($name){
     return view("Users",['name'=>$name]);
 });*/
-Route::get("Users",[user::class,'loadView']);
-//Route::view("Users",['Users']);
+Route::post("Users",[user::class,'getData']);
+Route::view("login","Users");
+route::view("Header",'Header');
+route::view("Footer",'Footer');

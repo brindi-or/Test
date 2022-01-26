@@ -6,12 +6,31 @@
     <title>Document</title>
 </head>
 <body>
+    @include("Header")
+   
     <x-header data="user component data"/>
-    <h1>Users page</h1>
-    @if($user=="ani")
-    <h3>Hi {{$user}}</h3>
-    @elseif($user=="bree")
-    <h3>hello {{$user}}</h3>
-    @endif
+    <h1>User Login</h1>
+    <form action="Users" method="POST">
+        @csrf
+        Username: <input type="text" name="Username" id="" placeholder="Enter User Id" ><br>
+        <span style="color:red">@error('Username'){{$message}}@enderror </span><br>
+        Mail: <input type="text" name="Usermail" id="" placeholder="Enter User mail" ><br><br>
+        Password: <input type="password" name="Userpassword" id="" placeholder="Enter User password" ><br>
+        <span style="color:red">@error('Userpassword'){{$message}}@enderror </span><br>
+        <button type="submit" class="submit">Login</button>
+
+    </form>
+    
+    
 </body>
+@include("Footer")
 </html>
+
+<style>
+    .submit{
+        background-color:rgb(135, 203, 235);
+        color:green;
+        width: 70px;
+        border-radius: 3px;
+    }
+</style>
