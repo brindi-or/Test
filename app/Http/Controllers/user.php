@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class user extends Controller
 {
@@ -20,7 +22,13 @@ class user extends Controller
         return DB::select("select * from users"); 
         
     }
+    function Add(Request $req){
+        $data= $req ->input('Username');
+        $req->session()->flash('Username',$data);
+        return redirect('Add');
 
+    }
+   
     
 
 }
